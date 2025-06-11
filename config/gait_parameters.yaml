@@ -1,0 +1,128 @@
+gait_type: static_walk
+
+# 时间参数
+timing:
+  gait_cycle_time: 1.2           # 完整步态周期时间 [s]
+  swing_time: 0.48               # 单脚摆动时间 [s]
+  stance_time: 0.72              # 单脚支撑时间 [s]
+  double_support_time: 0.24      # 双脚支撑时间 [s]
+  swing_ratio: 0.4               # 摆动相比例
+  stance_ratio: 0.6              # 支撑相比例
+  double_support_ratio: 0.2      # 双支撑相比例
+  step_frequency: 0.833          # 步频 [Hz]
+  cadence: 50.0                  # 步伐节拍 [steps/min]
+
+# 空间参数
+spatial:
+  step_length: 0.15              # 前进步长 [m]
+  step_width: 0.12               # 步宽（足部横向间距）[m]
+  step_height: 0.05              # 抬脚高度 [m]
+  hip_width: 0.18                # 髋关节间距 [m]
+  hip_height: 0.8                # 髋关节高度 [m]
+  leg_length: 0.8                # 腿长 [m]
+  foot_length: 0.25              # 足部长度 [m]
+  foot_width: 0.1                # 足部宽度 [m]
+  max_step_length: 0.4           # 最大步长 [m]
+  max_step_width: 0.3            # 最大步宽 [m]
+  max_step_height: 0.15          # 最大抬脚高度 [m]
+  turning_radius: 1.0            # 转向半径 [m]
+  max_turning_rate: 0.5          # 最大转向速率 [rad/s]
+
+# 动力学参数
+dynamics:
+  walking_speed: 0.125           # 行走速度 [m/s]
+  max_walking_speed: 1.0         # 最大行走速度 [m/s]
+  acceleration: 0.5              # 加速度 [m/s²]
+  deceleration: 0.8              # 减速度 [m/s²]
+  turning_speed: 0.0             # 转向速度 [rad/s]
+  max_turning_speed: 1.0         # 最大转向速度 [rad/s]
+  angular_acceleration: 2.0      # 角加速度 [rad/s²]
+  com_height: 0.8                # 期望质心高度 [m]
+  com_oscillation_amplitude: 0.02 # 质心振荡幅度 [m]
+  com_lateral_shift: 0.02        # 质心侧向偏移 [m]
+  foot_clearance: 0.05           # 足部离地间隙 [m]
+  foot_landing_velocity: 0.1     # 足部着地速度 [m/s]
+
+# 稳定性参数
+stability:
+  zmp_margin_x: 0.05             # ZMP前后安全边界 [m]
+  zmp_margin_y: 0.03             # ZMP左右安全边界 [m]
+  balance_gain_x: 1.0            # 前后平衡增益
+  balance_gain_y: 1.0            # 左右平衡增益
+  balance_gain_yaw: 0.5          # 偏航平衡增益
+  max_body_roll: 0.1             # 最大身体滚转角 [rad]
+  max_body_pitch: 0.1            # 最大身体俯仰角 [rad]
+  max_body_yaw: 0.2              # 最大身体偏航角 [rad]
+  support_polygon_margin: 0.02   # 支撑多边形安全边界 [m]
+  capture_point_gain: 1.0        # 捕获点控制增益
+  step_adjustment_gain: 0.5      # 步长调整增益
+
+# 足部轨迹参数
+trajectory:
+  swing_trajectory_type: bezier  # 轨迹类型: bezier, polynomial, cycloidal
+  bezier_control_height_ratio: 0.7 # 贝塞尔控制点高度比例
+  bezier_control_forward_ratio: 0.3 # 贝塞尔控制点前进比例
+  polynomial_order: 5            # 多项式阶数
+  lift_off_time_ratio: 0.1       # 离地时间比例
+  mid_swing_time_ratio: 0.5      # 摆动中点时间比例
+  touch_down_time_ratio: 0.9     # 着地时间比例
+  landing_damping: 0.8           # 着地阻尼系数
+  landing_stiffness: 1000.0      # 着地刚度系数
+
+# 预设参数
+presets:
+  slow_walk:
+    timing:
+      gait_cycle_time: 2.0
+      swing_ratio: 0.4
+      stance_ratio: 0.6
+      double_support_ratio: 0.3
+    spatial:
+      step_length: 0.1
+      step_width: 0.12
+      step_height: 0.03
+    dynamics:
+      walking_speed: 0.05
+      com_height: 0.8
+
+  normal_walk:
+    timing:
+      gait_cycle_time: 1.2
+      swing_ratio: 0.4
+      stance_ratio: 0.6
+      double_support_ratio: 0.2
+    spatial:
+      step_length: 0.15
+      step_width: 0.12
+      step_height: 0.05
+    dynamics:
+      walking_speed: 0.125
+      com_height: 0.8
+
+  fast_walk:
+    timing:
+      gait_cycle_time: 0.8
+      swing_ratio: 0.45
+      stance_ratio: 0.55
+      double_support_ratio: 0.1
+    spatial:
+      step_length: 0.2
+      step_width: 0.1
+      step_height: 0.08
+    dynamics:
+      walking_speed: 0.25
+      com_height: 0.85
+
+  march_in_place:
+    timing:
+      gait_cycle_time: 1.0
+      swing_ratio: 0.5
+      stance_ratio: 0.5
+      double_support_ratio: 0.0
+    spatial:
+      step_length: 0.0
+      step_width: 0.12
+      step_height: 0.1
+    dynamics:
+      walking_speed: 0.0
+      com_height: 0.8 

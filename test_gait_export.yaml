@@ -1,0 +1,129 @@
+dynamics:
+  acceleration: 0.5
+  angular_acceleration: 2.0
+  com_height: 0.8
+  com_lateral_shift: 0.02
+  com_oscillation_amplitude: 0.02
+  deceleration: 0.8
+  foot_clearance: 0.05
+  foot_landing_velocity: 0.1
+  max_turning_speed: 1.0
+  max_walking_speed: 1.0
+  turning_speed: 0.0
+  walking_speed: 0.0
+gait_type: static_walk
+presets:
+  fast_walk:
+    dynamics:
+      com_height: 0.85
+      walking_speed: 0.25
+    spatial:
+      step_height: 0.08
+      step_length: 0.2
+      step_width: 0.1
+    timing:
+      double_support_ratio: 0.1
+      gait_cycle_time: 0.8
+      stance_ratio: 0.55
+      swing_ratio: 0.45
+  march_in_place:
+    dynamics:
+      com_height: 0.8
+      walking_speed: 0.0
+    spatial:
+      step_height: 0.1
+      step_length: 0.0
+      step_width: 0.12
+    timing:
+      double_support_ratio: 0.0
+      gait_cycle_time: 1.0
+      stance_ratio: 0.5
+      swing_ratio: 0.5
+  normal_walk:
+    dynamics:
+      com_height: 0.8
+      walking_speed: 0.125
+    spatial:
+      step_height: 0.05
+      step_length: 0.15
+      step_width: 0.12
+    timing:
+      double_support_ratio: 0.2
+      gait_cycle_time: 1.2
+      stance_ratio: 0.6
+      swing_ratio: 0.4
+  slow_walk:
+    dynamics:
+      com_height: 0.8
+      walking_speed: 0.05
+    spatial:
+      step_height: 0.03
+      step_length: 0.1
+      step_width: 0.12
+    timing:
+      double_support_ratio: 0.3
+      gait_cycle_time: 2.0
+      stance_ratio: 0.6
+      swing_ratio: 0.4
+spatial:
+  foot_length: 0.25
+  foot_width: 0.1
+  hip_height: 0.8
+  hip_width: 0.18
+  leg_length: 0.8
+  max_step_height: 0.15
+  max_step_length: 0.4
+  max_step_width: 0.3
+  max_turning_rate: 0.5
+  step_height: 0.05
+  step_length: !!python/object/apply:numpy._core.multiarray.scalar
+  - !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    CtejcD0Kxz8=
+  step_width: 0.12
+  turning_radius: 1.0
+stability:
+  balance_gain_x: 1.0
+  balance_gain_y: 1.0
+  balance_gain_yaw: 0.5
+  capture_point_gain: 1.0
+  max_body_pitch: 0.1
+  max_body_roll: 0.1
+  max_body_yaw: 0.2
+  step_adjustment_gain: 0.5
+  support_polygon_margin: 0.02
+  zmp_margin_x: 0.05
+  zmp_margin_y: 0.03
+timing:
+  cadence: 50.0
+  double_support_ratio: 0.2
+  double_support_time: 0.24
+  gait_cycle_time: 1.2
+  stance_ratio: 0.6
+  stance_time: 0.72
+  step_frequency: 0.8333333333333334
+  swing_ratio: 0.4
+  swing_time: 0.48
+trajectory:
+  bezier_control_forward_ratio: 0.3
+  bezier_control_height_ratio: 0.7
+  landing_damping: 0.8
+  landing_stiffness: 1000.0
+  lift_off_time_ratio: 0.1
+  mid_swing_time_ratio: 0.5
+  polynomial_order: 5
+  swing_trajectory_type: bezier
+  touch_down_time_ratio: 0.9
