@@ -1,0 +1,180 @@
+{
+  "early_contact": {
+    "passed": false,
+    "early_contact_detected": true,
+    "state_switched": true,
+    "injection_time": 0.6327478885650635,
+    "switch_time": 1.1625268459320068,
+    "response_time": 0.5297789573669434,
+    "requirement": "< 10ms",
+    "actual": "529.8ms",
+    "state_transitions": [
+      {
+        "time": 1749665955.673289,
+        "from_state": {
+          "_value_": "right_support",
+          "_name_": "RIGHT_SUPPORT",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 3
+        },
+        "to_state": {
+          "_value_": "double_support_rl",
+          "_name_": "DOUBLE_SUPPORT_RL",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 5
+        },
+        "elapsed_time": 0.5307679176330566
+      },
+      {
+        "time": 1749665955.77527,
+        "from_state": {
+          "_value_": "double_support_rl",
+          "_name_": "DOUBLE_SUPPORT_RL",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 5
+        },
+        "to_state": {
+          "_value_": "left_support",
+          "_name_": "LEFT_SUPPORT",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 2
+        },
+        "elapsed_time": 0.6327488422393799
+      }
+    ]
+  },
+  "swing_recovery": {
+    "passed": true,
+    "interruption_injected": true,
+    "recovery_detected": true,
+    "recovery_delay": 0.10073614120483398,
+    "normal_cycles_after_recovery": 500,
+    "requirement": "恢复时间<500ms, 稳定运行>500周期",
+    "actual": "恢复时间100.7ms, 稳定运行500周期",
+    "state_transitions": [
+      {
+        "time": 1749665956.954974,
+        "from_state": {
+          "_value_": "right_support",
+          "_name_": "RIGHT_SUPPORT",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 3
+        },
+        "to_state": {
+          "_value_": "double_support_rl",
+          "_name_": "DOUBLE_SUPPORT_RL",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 5
+        },
+        "elapsed_time": 0.5445168018341064
+      },
+      {
+        "time": 1749665957.055697,
+        "from_state": {
+          "_value_": "double_support_rl",
+          "_name_": "DOUBLE_SUPPORT_RL",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 5
+        },
+        "to_state": {
+          "_value_": "left_support",
+          "_name_": "LEFT_SUPPORT",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 2
+        },
+        "elapsed_time": 0.6452398300170898
+      },
+      {
+        "time": 1749665957.5990222,
+        "from_state": {
+          "_value_": "left_support",
+          "_name_": "LEFT_SUPPORT",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 2
+        },
+        "to_state": {
+          "_value_": "double_support_lr",
+          "_name_": "DOUBLE_SUPPORT_LR",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 4
+        },
+        "elapsed_time": 1.1885650157928467
+      },
+      {
+        "time": 1749665957.69998,
+        "from_state": {
+          "_value_": "double_support_lr",
+          "_name_": "DOUBLE_SUPPORT_LR",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 4
+        },
+        "to_state": {
+          "_value_": "right_support",
+          "_name_": "RIGHT_SUPPORT",
+          "__objclass__": "{'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x103072520>)>, '__module__': 'gait_scheduler', '__firstlineno__': 29, '__doc__': '步态状态枚举', '__static_attributes__': (), '_new_member_': <built-in method __new__ of type object at 0x102becfb8>, '_use_args_': False, '_member_names_': ['IDLE', 'STANDING', 'LEFT_SUPPORT', 'RIGHT_SUPPORT', 'DOUBLE_SUPPORT_LR', 'DOUBLE_SUPPORT_RL', 'FLIGHT', 'EMERGENCY_STOP'], '_member_map_': {'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_value2member_map_': {'idle': <GaitState.IDLE: 'idle'>, 'standing': <GaitState.STANDING: 'standing'>, 'left_support': <GaitState.LEFT_SUPPORT: 'left_support'>, 'right_support': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'double_support_lr': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'double_support_rl': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'flight': <GaitState.FLIGHT: 'flight'>, 'emergency_stop': <GaitState.EMERGENCY_STOP: 'emergency_stop'>}, '_hashable_values_': ['idle', 'standing', 'left_support', 'right_support', 'double_support_lr', 'double_support_rl', 'flight', 'emergency_stop'], '_unhashable_values_': [], '_unhashable_values_map_': {}, '_member_type_': <class 'object'>, '_value_repr_': None, 'IDLE': <GaitState.IDLE: 'idle'>, 'STANDING': <GaitState.STANDING: 'standing'>, 'LEFT_SUPPORT': <GaitState.LEFT_SUPPORT: 'left_support'>, 'RIGHT_SUPPORT': <GaitState.RIGHT_SUPPORT: 'right_support'>, 'DOUBLE_SUPPORT_LR': <GaitState.DOUBLE_SUPPORT_LR: 'double_support_lr'>, 'DOUBLE_SUPPORT_RL': <GaitState.DOUBLE_SUPPORT_RL: 'double_support_rl'>, 'FLIGHT': <GaitState.FLIGHT: 'flight'>, 'EMERGENCY_STOP': <GaitState.EMERGENCY_STOP: 'emergency_stop'>, '__new__': <function Enum.__new__ at 0x1030722a0>}",
+          "_sort_order_": 3
+        },
+        "elapsed_time": 1.2895228862762451
+      }
+    ]
+  },
+  "threshold_accuracy": {
+    "passed": false,
+    "accuracy": 0.4,
+    "correct_count": 2,
+    "total_tests": 5,
+    "threshold_tests": [
+      {
+        "force": 30.0,
+        "should_trigger": false,
+        "actually_triggered": false,
+        "correct": true,
+        "description": "低于阈值"
+      },
+      {
+        "force": 45.0,
+        "should_trigger": false,
+        "actually_triggered": false,
+        "correct": true,
+        "description": "接近阈值"
+      },
+      {
+        "force": 55.0,
+        "should_trigger": true,
+        "actually_triggered": false,
+        "correct": false,
+        "description": "超过阈值"
+      },
+      {
+        "force": 75.0,
+        "should_trigger": true,
+        "actually_triggered": false,
+        "correct": false,
+        "description": "明显超过"
+      },
+      {
+        "force": 100.0,
+        "should_trigger": true,
+        "actually_triggered": false,
+        "correct": false,
+        "description": "大幅超过"
+      }
+    ],
+    "requirement": ">= 90%",
+    "actual": "40.0%"
+  },
+  "continuous_operation": {
+    "passed": false,
+    "total_cycles": 101,
+    "total_transitions": 0,
+    "unique_states": 1,
+    "state_counts": {
+      "GaitState.RIGHT_SUPPORT": 101
+    },
+    "no_deadlock": false,
+    "max_consecutive_same_state": 100,
+    "disturbance_injected": false,
+    "requirement": "转换>10, 状态>2, 无锁死",
+    "actual": "转换0, 状态1, 连续100"
+  }
+}

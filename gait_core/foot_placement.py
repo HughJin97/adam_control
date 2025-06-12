@@ -380,17 +380,17 @@ class FootPlacementPlanner:
         
         # 横向位移 (相对于身体中线)
         if swing_leg.lower() in ["left", "left_foot"]:
-            # 左脚：向左偏移
+            # 左脚：向左侧偏移（y轴负方向）
             lateral_displacement = Vector3D(
                 -step_width * 0.5 * np.sin(self.body_heading),
-                step_width * 0.5 * np.cos(self.body_heading),
+                -step_width * 0.5 * np.cos(self.body_heading),
                 0.0
             )
         else:
-            # 右脚：向右偏移
+            # 右脚：向右侧偏移（y轴正方向）
             lateral_displacement = Vector3D(
                 step_width * 0.5 * np.sin(self.body_heading),
-                -step_width * 0.5 * np.cos(self.body_heading),
+                step_width * 0.5 * np.cos(self.body_heading),
                 0.0
             )
         

@@ -1,0 +1,115 @@
+# 摆动足轨迹规划配置文件
+# Swing Foot Trajectory Planning Configuration
+
+# 默认轨迹类型选择
+default_trajectory_type: "bezier"  # polynomial, bezier, sinusoidal, cycloid
+
+# 基本轨迹参数
+basic_parameters:
+  step_height: 0.08               # 抬脚高度 [m] (建议5-10cm)
+  step_duration: 0.4              # 摆动周期 [s]
+  ground_clearance: 0.02          # 地面间隙 [m]
+
+# 关键点时间比例
+timing_ratios:
+  lift_off_ratio: 0.0             # 离地时刻 (摆动开始)
+  max_height_ratio: 0.5           # 最大高度时刻 (摆动中点)
+  touch_down_ratio: 1.0           # 着地时刻 (摆动结束)
+
+# 贝塞尔曲线轨迹参数
+bezier_parameters:
+  control_height_ratio: 0.8       # 控制点高度比例
+  control_forward_ratio: 0.3      # 控制点前进比例
+  smoothness_factor: 1.0          # 平滑度因子
+
+# 三次多项式轨迹参数
+polynomial_parameters:
+  order: 3                        # 多项式阶数 (建议3次)
+  boundary_velocity: 0.0          # 边界速度 [m/s]
+  continuity_order: 2             # 连续性阶数 (位置、速度、加速度)
+
+# 正弦函数轨迹参数
+sinusoidal_parameters:
+  vertical_periods: 1.0           # 垂直方向周期数
+  horizontal_smooth: true         # 水平方向是否平滑
+  amplitude_factor: 1.0           # 幅度因子
+  phase_offset: 0.0               # 相位偏移 [rad]
+
+# 摆线轨迹参数
+cycloid_parameters:
+  radius_factor: 1.0              # 半径因子
+  rolling_periods: 0.5            # 滚动周期数
+  vertical_scaling: 0.5           # 垂直缩放因子
+
+# 速度约束
+velocity_constraints:
+  max_horizontal_velocity: 2.0    # 最大水平速度 [m/s]
+  max_vertical_velocity: 1.0      # 最大垂直速度 [m/s]
+  velocity_smoothing: 0.1         # 速度平滑因子
+
+# 安全参数
+safety_parameters:
+  acceleration_limit: 10.0        # 加速度限制 [m/s²]
+  jerk_limit: 50.0               # 加加速度限制 [m/s³]
+  min_step_height: 0.03          # 最小抬脚高度 [m]
+  max_step_height: 0.15          # 最大抬脚高度 [m]
+
+# 自适应参数
+adaptive_parameters:
+  terrain_height_gain: 0.5        # 地形高度增益
+  speed_height_gain: 0.02         # 速度高度增益
+  stability_margin: 0.01          # 稳定性余量 [m]
+
+# 优化参数
+optimization_parameters:
+  energy_weight: 0.3              # 能耗权重
+  smoothness_weight: 0.4          # 平滑度权重
+  stability_weight: 0.3           # 稳定性权重
+  convergence_threshold: 1e-6     # 收敛阈值
+
+# 不同步态模式下的推荐参数
+gait_mode_presets:
+  walking:
+    step_height: 0.06            # 步行抬脚高度 [m]
+    step_duration: 0.5           # 步行摆动周期 [s]
+    trajectory_type: "polynomial"
+    
+  trotting:
+    step_height: 0.08            # 小跑抬脚高度 [m]
+    step_duration: 0.3           # 小跑摆动周期 [s]
+    trajectory_type: "bezier"
+    
+  bounding:
+    step_height: 0.12            # 跳跃抬脚高度 [m]
+    step_duration: 0.25          # 跳跃摆动周期 [s]
+    trajectory_type: "sinusoidal"
+    
+  climbing:
+    step_height: 0.10            # 爬坡抬脚高度 [m]
+    step_duration: 0.6           # 爬坡摆动周期 [s]
+    trajectory_type: "cycloid"
+
+# 地形适应参数
+terrain_adaptation:
+  flat_ground:
+    height_multiplier: 1.0       # 平地高度倍数
+    duration_multiplier: 1.0     # 平地时间倍数
+    
+  rough_terrain:
+    height_multiplier: 1.5       # 粗糙地形高度倍数
+    duration_multiplier: 1.2     # 粗糙地形时间倍数
+    
+  stairs:
+    height_multiplier: 2.0       # 楼梯高度倍数
+    duration_multiplier: 1.5     # 楼梯时间倍数
+    
+  soft_ground:
+    height_multiplier: 1.2       # 软地面高度倍数
+    duration_multiplier: 1.1     # 软地面时间倍数
+
+# 调试和监控参数
+debug_parameters:
+  enable_trajectory_logging: false    # 启用轨迹日志
+  sample_frequency: 100              # 采样频率 [Hz]
+  trajectory_visualization: false    # 轨迹可视化
+  performance_monitoring: true       # 性能监控 

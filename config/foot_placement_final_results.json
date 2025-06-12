@@ -1,0 +1,130 @@
+{
+  "timing": {
+    "passed": true,
+    "calculation_time": 3.719329833984375e-05,
+    "one_cycle_time": 0.001,
+    "requirement": "≤ 1.0ms (1个控制周期)",
+    "actual": "0.037ms"
+  },
+  "basic_accuracy": {
+    "passed": "True",
+    "horizontal_error": 0.0,
+    "error_x": 0.0,
+    "error_y": 0.0,
+    "actual_delta_x": 0.16999999999999998,
+    "actual_delta_y": -0.09,
+    "expected_delta_x": 0.16999999999999998,
+    "expected_delta_y": -0.09,
+    "requirement": "< 2cm",
+    "actual": "0.00cm"
+  },
+  "dynamic_accuracy": {
+    "passed": "True",
+    "horizontal_error": 0.0,
+    "error_x": 0.0,
+    "error_y": 0.0,
+    "actual_delta_x": 0.27,
+    "actual_delta_y": -0.09,
+    "expected_delta_x": 0.27,
+    "expected_delta_y": -0.09,
+    "dynamic_step_length": 0.25,
+    "test_velocity": 0.2,
+    "requirement": "< 2cm",
+    "actual": "0.00cm"
+  },
+  "consistency": {
+    "passed": "True",
+    "max_error": 3.1031676915590914e-17,
+    "avg_error": 1.7308565629369748e-17,
+    "std_error": 6.861555643110583e-18,
+    "step_results": [
+      {
+        "position": [
+          0.0,
+          -0.102,
+          -0.649
+        ],
+        "target": [
+          0.16999999999999998,
+          -0.19199999999999998,
+          0.02
+        ],
+        "delta": [
+          0.16999999999999998,
+          -0.08999999999999998
+        ],
+        "error": 1.3877787807814457e-17
+      },
+      {
+        "position": [
+          0.15,
+          -0.102,
+          -0.649
+        ],
+        "target": [
+          0.32,
+          -0.19199999999999998,
+          0.02
+        ],
+        "delta": [
+          0.17,
+          -0.08999999999999998
+        ],
+        "error": 3.1031676915590914e-17
+      },
+      {
+        "position": [
+          0.3,
+          -0.102,
+          -0.649
+        ],
+        "target": [
+          0.47,
+          -0.19199999999999998,
+          0.02
+        ],
+        "delta": [
+          0.16999999999999998,
+          -0.08999999999999998
+        ],
+        "error": 1.3877787807814457e-17
+      },
+      {
+        "position": [
+          -0.15,
+          -0.102,
+          -0.649
+        ],
+        "target": [
+          0.02,
+          -0.19199999999999998,
+          0.02
+        ],
+        "delta": [
+          0.16999999999999998,
+          -0.08999999999999998
+        ],
+        "error": 1.3877787807814457e-17
+      },
+      {
+        "position": [
+          0.0,
+          -0.082,
+          -0.649
+        ],
+        "target": [
+          0.16999999999999998,
+          -0.17200000000000001,
+          0.02
+        ],
+        "delta": [
+          0.16999999999999998,
+          -0.09000000000000001
+        ],
+        "error": 1.3877787807814457e-17
+      }
+    ],
+    "requirement": "最大误差<2cm, 标准差<5mm",
+    "actual": "最大误差0.0mm, 标准差0.0mm"
+  }
+}

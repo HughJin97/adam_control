@@ -30,7 +30,7 @@ class GaitPhase(Enum):
     FLIGHT = 3          # 飞行相（跳跃时）
 
 
-class LegState(Enum):
+class LegState(Enum): 
     """腿部状态枚举"""
     LEFT_LEG = 0
     RIGHT_LEG = 1
@@ -323,6 +323,17 @@ class DataBus:
         self.battery_current = 0.0         # 电池电流 [A]
         self.system_temperature = 0.0      # 系统温度 [°C]
         
+        # MPC专用数据结构
+        self.desired_forces = {}              # MPC期望接触力 {foot_name: Vector3D}
+        self.mpc_com_trajectory = []          # MPC质心轨迹缓存
+        self.mpc_zmp_trajectory = []          # MPC ZMP轨迹缓存
+        self.mpc_status = {                   # MPC状态信息
+            'last_solve_time': 0.0,
+            'solve_success': False,
+            'cost': float('inf'),
+            'solver_type': 'unknown'
+        }
+        
         print("DataBus initialized successfully")
     
     def update_timestamp(self):
@@ -464,6 +475,27 @@ class DataBus:
         with self._lock:
             if ee_name in self.end_effectors:
                 return self.end_effectors[ee_name].contact_state
+            return None
+    
+    def set_end_effector_contact_force(self, ee_name: str, force_magnitude: float) -> bool:
+        """设置末端执行器接触力大小"""
+        with self._lock:
+            if ee_name in self.end_effectors:
+                self.end_effectors[ee_name].contact_force_magnitude = force_magnitude
+                # 根据力大小自动更新接触状态
+                if force_magnitude > 20.0:  # 阈值可配置
+                    self.end_effectors[ee_name].contact_state = ContactState.CONTACT
+                else:
+                    self.end_effectors[ee_name].contact_state = ContactState.NO_CONTACT
+                self.update_timestamp()
+                return True
+            return False
+    
+    def get_end_effector_contact_force(self, ee_name: str) -> Optional[float]:
+        """获取末端执行器接触力大小"""
+        with self._lock:
+            if ee_name in self.end_effectors:
+                return self.end_effectors[ee_name].contact_force_magnitude
             return None
     
     # ================== IMU数据接口 ==================
@@ -1692,6 +1724,172 @@ class DataBus:
                 "trajectory_interface_ready": self._has_gait_scheduler and self._has_foot_planner,
                 "mpc_interface_ready": self._has_gait_scheduler,
                 "sensor_interface_ready": True
+            }
+    
+    def set_desired_contact_force(self, foot_name: str, force: Vector3D) -> bool:
+        """
+        设置足部期望接触力（MPC输出）
+        
+        Args:
+            foot_name: 足部名称 ('left_foot', 'right_foot')
+            force: 期望接触力向量
+            
+        Returns:
+            bool: 设置是否成功
+        """
+        with self._lock:
+            try:
+                self.desired_forces[foot_name] = force
+                self.update_timestamp()
+                return True
+            except Exception as e:
+                print(f"设置期望接触力失败: {e}")
+                return False
+    
+    def get_desired_contact_force(self, foot_name: str) -> Optional[Vector3D]:
+        """
+        获取足部期望接触力
+        
+        Args:
+            foot_name: 足部名称
+            
+        Returns:
+            Vector3D: 期望接触力，如果不存在返回None
+        """
+        with self._lock:
+            return self.desired_forces.get(foot_name, None)
+    
+    def get_all_desired_contact_forces(self) -> Dict[str, Vector3D]:
+        """获取所有足部的期望接触力"""
+        with self._lock:
+            return self.desired_forces.copy()
+    
+    def set_center_of_mass_acceleration(self, acceleration: Vector3D):
+        """
+        设置质心加速度（MPC输出）
+        
+        Args:
+            acceleration: 质心加速度向量
+        """
+        with self._lock:
+            self.center_of_mass.acceleration = acceleration
+            self.update_timestamp()
+    
+    def get_center_of_mass_acceleration(self) -> Vector3D:
+        """获取质心加速度"""
+        with self._lock:
+            return self.center_of_mass.acceleration
+    
+    def set_mpc_com_trajectory(self, trajectory: List[Vector3D]):
+        """
+        设置MPC质心轨迹预测
+        
+        Args:
+            trajectory: 质心位置轨迹列表
+        """
+        with self._lock:
+            self.mpc_com_trajectory = trajectory.copy()
+            self.update_timestamp()
+    
+    def get_mpc_com_trajectory(self) -> List[Vector3D]:
+        """获取MPC质心轨迹预测"""
+        with self._lock:
+            return self.mpc_com_trajectory.copy()
+    
+    def set_mpc_zmp_trajectory(self, zmp_trajectory: List[Vector3D]):
+        """
+        设置MPC ZMP轨迹预测
+        
+        Args:
+            zmp_trajectory: ZMP轨迹列表
+        """
+        with self._lock:
+            self.mpc_zmp_trajectory = zmp_trajectory.copy()
+            self.update_timestamp()
+    
+    def get_mpc_zmp_trajectory(self) -> List[Vector3D]:
+        """获取MPC ZMP轨迹预测"""
+        with self._lock:
+            return self.mpc_zmp_trajectory.copy()
+    
+    def update_mpc_status(self, solve_time: float, success: bool, cost: float, solver_type: str):
+        """
+        更新MPC求解状态
+        
+        Args:
+            solve_time: 求解时间
+            success: 求解是否成功
+            cost: 优化代价
+            solver_type: 求解器类型
+        """
+        with self._lock:
+            self.mpc_status.update({
+                'last_solve_time': solve_time,
+                'solve_success': success,
+                'cost': cost,
+                'solver_type': solver_type,
+                'timestamp': time.time()
+            })
+            self.update_timestamp()
+    
+    def get_mpc_status(self) -> Dict:
+        """获取MPC状态信息"""
+        with self._lock:
+            return self.mpc_status.copy()
+    
+    def set_target_foot_position_vector3d(self, foot_name: str, position: Vector3D) -> bool:
+        """
+        设置足部目标位置（Vector3D版本）
+        
+        Args:
+            foot_name: 足部名称
+            position: 目标位置向量
+            
+        Returns:
+            bool: 设置是否成功
+        """
+        with self._lock:
+            try:
+                # 标准化足部名称，与get_target_foot_position保持一致
+                foot_key = foot_name.lower()
+                if not foot_key.endswith("_foot"):
+                    foot_key += "_foot"
+                
+                self.target_foot_pos[foot_key] = {
+                    'x': position.x,
+                    'y': position.y,
+                    'z': position.z
+                }
+                self.update_timestamp()
+                return True
+            except Exception as e:
+                print(f"设置足部目标位置失败: {e}")
+                return False
+    
+    def clear_mpc_data(self):
+        """清除MPC相关数据"""
+        with self._lock:
+            self.desired_forces.clear()
+            self.mpc_com_trajectory.clear()
+            self.mpc_zmp_trajectory.clear()
+            # 注意：不清除target_foot_pos，因为这是共享的步态数据
+            self.mpc_status = {
+                'last_solve_time': 0.0,
+                'solve_success': False,
+                'cost': float('inf'),
+                'solver_type': 'unknown'
+            }
+            self.update_timestamp()
+    
+    def get_mpc_data_summary(self) -> Dict:
+        """获取MPC数据摘要"""
+        with self._lock:
+            return {
+                'desired_forces_count': len(self.desired_forces),
+                'com_trajectory_length': len(self.mpc_com_trajectory),
+                'zmp_trajectory_length': len(self.mpc_zmp_trajectory),
+                'mpc_status': self.mpc_status.copy(),
+                'target_foot_positions': self.target_foot_pos.copy()
             }
 
 

@@ -1,0 +1,77 @@
+
+<mujoco model="biped_trajectory_demo">
+    <compiler angle="degree" coordinate="local" inertiafromgeom="true"/>
+    
+    <option timestep="0.01" gravity="0 0 -9.81" integrator="RK4"/>
+    
+    <default>
+        <joint armature="0.01" damping="0.1" limited="true"/>
+        <geom contype="1" conaffinity="1" condim="3" friction="1 0.5 0.005" 
+              rgba="0.7 0.7 0.7 1" density="1000"/>
+    </default>
+    
+    <asset>
+        <texture name="grid" type="2d" builtin="checker" rgb1="0.1 0.2 0.3" 
+                 rgb2="0.2 0.3 0.4" width="300" height="300"/>
+        <material name="grid" texture="grid" texrepeat="8 8" reflectance="0.2"/>
+        <material name="robot" rgba="0.6 0.6 0.8 1"/>
+        <material name="foot" rgba="0.8 0.4 0.2 1"/>
+    </asset>
+    
+    <worldbody>
+        <light diffuse="0.5 0.5 0.5" pos="0 0 3" dir="0 0 -1"/>
+        <geom name="floor" size="3 3 0.1" type="plane" material="grid"/>
+        
+        <!-- 机器人躯干 -->
+        <body name="torso" pos="0 0 1.0">
+            <geom name="torso_geom" type="box" size="0.15 0.08 0.25" material="robot"/>
+            <joint name="root_joint" type="free"/>
+            
+            <!-- 左腿 -->
+            <body name="left_thigh" pos="-0.08 0 -0.15">
+                <joint name="left_hip" type="hinge" axis="0 1 0" range="-90 90"/>
+                <geom name="left_thigh_geom" type="capsule" size="0.04" fromto="0 0 0 0 0 -0.3" material="robot"/>
+                
+                <body name="left_shin" pos="0 0 -0.3">
+                    <joint name="left_knee" type="hinge" axis="0 1 0" range="-120 0"/>
+                    <geom name="left_shin_geom" type="capsule" size="0.03" fromto="0 0 0 0 0 -0.3" material="robot"/>
+                    
+                    <body name="left_foot" pos="0 0 -0.3">
+                        <joint name="left_ankle" type="hinge" axis="0 1 0" range="-45 45"/>
+                        <geom name="left_foot_geom" type="box" size="0.08 0.04 0.02" material="foot"/>
+                        <!-- 左脚标记点 -->
+                        <site name="left_foot_site" pos="0 0 -0.02" size="0.01" rgba="1 0 0 1"/>
+                    </body>
+                </body>
+            </body>
+            
+            <!-- 右腿 -->
+            <body name="right_thigh" pos="0.08 0 -0.15">
+                <joint name="right_hip" type="hinge" axis="0 1 0" range="-90 90"/>
+                <geom name="right_thigh_geom" type="capsule" size="0.04" fromto="0 0 0 0 0 -0.3" material="robot"/>
+                
+                <body name="right_shin" pos="0 0 -0.3">
+                    <joint name="right_knee" type="hinge" axis="0 1 0" range="-120 0"/>
+                    <geom name="right_shin_geom" type="capsule" size="0.03" fromto="0 0 0 0 0 -0.3" material="robot"/>
+                    
+                    <body name="right_foot" pos="0 0 -0.3">
+                        <joint name="right_ankle" type="hinge" axis="0 1 0" range="-45 45"/>
+                        <geom name="right_foot_geom" type="box" size="0.08 0.04 0.02" material="foot"/>
+                        <!-- 右脚标记点 -->
+                        <site name="right_foot_site" pos="0 0 -0.02" size="0.01" rgba="0 0 1 1"/>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+    
+    <actuator>
+        <motor name="left_hip_motor" joint="left_hip" gear="100"/>
+        <motor name="left_knee_motor" joint="left_knee" gear="100"/>
+        <motor name="left_ankle_motor" joint="left_ankle" gear="50"/>
+        <motor name="right_hip_motor" joint="right_hip" gear="100"/>
+        <motor name="right_knee_motor" joint="right_knee" gear="100"/>
+        <motor name="right_ankle_motor" joint="right_ankle" gear="50"/>
+    </actuator>
+</mujoco>
+        

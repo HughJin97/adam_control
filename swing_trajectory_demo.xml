@@ -1,0 +1,840 @@
+<?xml version="1.0" ?>
+<mujoco model="swing_trajectory_visualization">
+    <compiler angle="degree" coordinate="local" inertiafromgeom="true"/>
+    
+    <option timestep="0.01" gravity="0 0 -9.81" integrator="RK4"/>
+    
+    <default>
+        <joint armature="0.01" damping="0.1" limited="true"/>
+        <geom contype="1" conaffinity="1" condim="3" friction="1 0.5 0.005" 
+              rgba="0.7 0.7 0.7 1" density="1000"/>
+    </default>
+    
+    <asset>
+        <texture name="grid" type="2d" builtin="checker" rgb1="0.1 0.2 0.3" 
+                 rgb2="0.2 0.3 0.4" width="300" height="300"/>
+        <material name="grid" texture="grid" texrepeat="8 8" reflectance="0.2"/>
+        <material name="robot" rgba="0.6 0.6 0.8 1"/>
+        <material name="foot" rgba="0.8 0.4 0.2 1"/>
+    </asset>
+    
+    <worldbody>
+        <light diffuse="0.5 0.5 0.5" pos="0 0 3" dir="0 0 -1"/>
+        <geom name="floor" size="3 3 0.1" type="plane" material="grid"/>
+        
+        <!-- 机器人躯干 -->
+        <body name="torso" pos="0 0 1.0">
+            <geom name="torso_geom" type="box" size="0.15 0.08 0.25" material="robot"/>
+            <joint name="root_joint" type="free"/>
+            
+            <!-- 左腿 -->
+            <body name="left_thigh" pos="-0.08 0 -0.15">
+                <joint name="left_hip" type="hinge" axis="0 1 0" range="-90 90"/>
+                <geom name="left_thigh_geom" type="capsule" size="0.04" fromto="0 0 0 0 0 -0.3" material="robot"/>
+                
+                <body name="left_shin" pos="0 0 -0.3">
+                    <joint name="left_knee" type="hinge" axis="0 1 0" range="-120 0"/>
+                    <geom name="left_shin_geom" type="capsule" size="0.03" fromto="0 0 0 0 0 -0.3" material="robot"/>
+                    
+                    <body name="left_foot" pos="0 0 -0.3">
+                        <joint name="left_ankle" type="hinge" axis="0 1 0" range="-45 45"/>
+                        <geom name="left_foot_geom" type="box" size="0.08 0.04 0.02" material="foot"/>
+                        <!-- 左脚标记点 -->
+                        <site name="left_foot_site" pos="0 0 -0.02" size="0.01" rgba="1 0 0 1"/>
+                    </body>
+                </body>
+            </body>
+            
+            <!-- 右腿 -->
+            <body name="right_thigh" pos="0.08 0 -0.15">
+                <joint name="right_hip" type="hinge" axis="0 1 0" range="-90 90"/>
+                <geom name="right_thigh_geom" type="capsule" size="0.04" fromto="0 0 0 0 0 -0.3" material="robot"/>
+                
+                <body name="right_shin" pos="0 0 -0.3">
+                    <joint name="right_knee" type="hinge" axis="0 1 0" range="-120 0"/>
+                    <geom name="right_shin_geom" type="capsule" size="0.03" fromto="0 0 0 0 0 -0.3" material="robot"/>
+                    
+                    <body name="right_foot" pos="0 0 -0.3">
+                        <joint name="right_ankle" type="hinge" axis="0 1 0" range="-45 45"/>
+                        <geom name="right_foot_geom" type="box" size="0.08 0.04 0.02" material="foot"/>
+                        <!-- 右脚标记点 -->
+                        <site name="right_foot_site" pos="0 0 -0.02" size="0.01" rgba="0 0 1 1"/>
+                    </body>
+                </body>
+            </body>
+        </body>
+        
+        <!-- ==================== -->
+        <!-- 轨迹可视化几何体 -->
+        <!-- ==================== -->
+        
+        <geom name="traj_left_foot_0_line_0" 
+              type="capsule" 
+              size="0.003 0.004356242746892611" 
+              pos="0.000523 0.100000 0.004325"
+              euler="-0.000 6.892 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_1" 
+              type="capsule" 
+              size="0.003 0.004536001590332211" 
+              pos="0.002565 0.100000 0.012924"
+              euler="-0.000 19.567 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_2" 
+              type="capsule" 
+              size="0.003 0.00483505290641974" 
+              pos="0.006525 0.100000 0.021371"
+              euler="-0.000 30.331 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_3" 
+              type="capsule" 
+              size="0.003 0.005197636444869179" 
+              pos="0.012258 0.100000 0.029568"
+              euler="-0.000 39.276 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_4" 
+              type="capsule" 
+              size="0.003 0.005583003044450209" 
+              pos="0.019613 0.100000 0.037418"
+              euler="-0.000 46.733 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_5" 
+              type="capsule" 
+              size="0.003 0.005964088371380579" 
+              pos="0.028445 0.100000 0.044829"
+              euler="-0.000 53.054 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_6" 
+              type="capsule" 
+              size="0.003 0.0063237658396060725" 
+              pos="0.038606 0.100000 0.051715"
+              euler="-0.000 58.533 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_7" 
+              type="capsule" 
+              size="0.003 0.0066515033371338395" 
+              pos="0.049947 0.100000 0.057994"
+              euler="-0.000 63.398 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_8" 
+              type="capsule" 
+              size="0.003 0.00694099252434492" 
+              pos="0.062321 0.100000 0.063594"
+              euler="-0.000 67.813 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_9" 
+              type="capsule" 
+              size="0.003 0.007188588753213018" 
+              pos="0.075581 0.100000 0.068448"
+              euler="-0.000 71.903 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_10" 
+              type="capsule" 
+              size="0.003 0.007392302599673258" 
+              pos="0.089579 0.100000 0.072500"
+              euler="-0.000 75.758 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_11" 
+              type="capsule" 
+              size="0.003 0.007551144946266841" 
+              pos="0.104168 0.100000 0.075701"
+              euler="-0.000 79.447 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_12" 
+              type="capsule" 
+              size="0.003 0.00766469801396434" 
+              pos="0.119199 0.100000 0.078015"
+              euler="-0.000 83.023 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_13" 
+              type="capsule" 
+              size="0.003 0.007732835307638117" 
+              pos="0.134526 0.100000 0.079414"
+              euler="-0.000 86.528 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_14" 
+              type="capsule" 
+              size="0.003 0.007755545532822206" 
+              pos="0.150000 0.100000 0.079883"
+              euler="-0.000 90.000 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_15" 
+              type="capsule" 
+              size="0.003 0.007732835307638117" 
+              pos="0.165474 0.100000 0.079414"
+              euler="-0.000 93.472 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_16" 
+              type="capsule" 
+              size="0.003 0.0076646980139643125" 
+              pos="0.180801 0.100000 0.078015"
+              euler="-0.000 96.977 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_17" 
+              type="capsule" 
+              size="0.003 0.007551144946266863" 
+              pos="0.195832 0.100000 0.075701"
+              euler="-0.000 100.553 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_18" 
+              type="capsule" 
+              size="0.003 0.007392302599673245" 
+              pos="0.210421 0.100000 0.072500"
+              euler="-0.000 104.242 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_19" 
+              type="capsule" 
+              size="0.003 0.007188588753213044" 
+              pos="0.224419 0.100000 0.068448"
+              euler="-0.000 108.097 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_20" 
+              type="capsule" 
+              size="0.003 0.006940992524344913" 
+              pos="0.237679 0.100000 0.063594"
+              euler="-0.000 112.187 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_21" 
+              type="capsule" 
+              size="0.003 0.006651503337133827" 
+              pos="0.250053 0.100000 0.057994"
+              euler="-0.000 116.602 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_22" 
+              type="capsule" 
+              size="0.003 0.006323765839606085" 
+              pos="0.261394 0.100000 0.051715"
+              euler="-0.000 121.467 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_23" 
+              type="capsule" 
+              size="0.003 0.005964088371380579" 
+              pos="0.271555 0.100000 0.044829"
+              euler="-0.000 126.946 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_24" 
+              type="capsule" 
+              size="0.003 0.005583003044450172" 
+              pos="0.280387 0.100000 0.037418"
+              euler="-0.000 133.267 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_25" 
+              type="capsule" 
+              size="0.003 0.005197636444869227" 
+              pos="0.287742 0.100000 0.029568"
+              euler="-0.000 140.724 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_26" 
+              type="capsule" 
+              size="0.003 0.004835052906419735" 
+              pos="0.293475 0.100000 0.021371"
+              euler="-0.000 149.669 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_27" 
+              type="capsule" 
+              size="0.003 0.004536001590332207" 
+              pos="0.297435 0.100000 0.012924"
+              euler="-0.000 160.433 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_line_28" 
+              type="capsule" 
+              size="0.003 0.004356242746892612" 
+              pos="0.299477 0.100000 0.004325"
+              euler="-0.000 173.108 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_start" 
+              type="sphere" 
+              size="0.015" 
+              pos="0.000000 0.100000 0.000000"
+              rgba="0.0 0.0 1.0 1.0"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_target" 
+              type="sphere" 
+              size="0.015" 
+              pos="0.300000 0.100000 0.000000"
+              rgba="1.0 0.5 0.0 1.0"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_0_peak" 
+              type="sphere" 
+              size="0.018" 
+              pos="0.142244 0.100000 0.079883"
+              rgba="1.0 0.0 1.0 1.0"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_29" 
+              type="capsule" 
+              size="0.003 0.003290047344363624" 
+              pos="0.000174 -0.099477 0.003244"
+              euler="-9.143 3.075 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_30" 
+              type="capsule" 
+              size="0.003 0.003583248312253188" 
+              pos="0.000855 -0.097435 0.009693"
+              euler="-25.084 8.977 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_31" 
+              type="capsule" 
+              size="0.003 0.004052242905846352" 
+              pos="0.002175 -0.093475 0.016028"
+              euler="-37.053 14.576 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_32" 
+              type="capsule" 
+              size="0.003 0.00459738036376928" 
+              pos="0.004086 -0.087742 0.022176"
+              euler="-45.702 19.975 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_33" 
+              type="capsule" 
+              size="0.003 0.005157523530968171" 
+              pos="0.006538 -0.080387 0.028063"
+              euler="-52.021 25.276 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_34" 
+              type="capsule" 
+              size="0.003 0.005698461910463999" 
+              pos="0.009482 -0.071555 0.033622"
+              euler="-56.767 30.581 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_35" 
+              type="capsule" 
+              size="0.003 0.006201235170844847" 
+              pos="0.012869 -0.061394 0.038786"
+              euler="-60.435 35.988 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_36" 
+              type="capsule" 
+              size="0.003 0.006655173495628494" 
+              pos="0.016649 -0.050053 0.043496"
+              euler="-63.335 41.587 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_37" 
+              type="capsule" 
+              size="0.003 0.007054178495003466" 
+              pos="0.020774 -0.037679 0.047696"
+              euler="-65.658 47.461 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_38" 
+              type="capsule" 
+              size="0.003 0.007394742906671512" 
+              pos="0.025194 -0.024419 0.051336"
+              euler="-67.523 53.674 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_39" 
+              type="capsule" 
+              size="0.003 0.007674863641709153" 
+              pos="0.029860 -0.010421 0.054375"
+              euler="-69.000 60.270 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_40" 
+              type="capsule" 
+              size="0.003 0.00789342160445431" 
+              pos="0.034723 0.004168 0.056776"
+              euler="-70.129 67.259 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_41" 
+              type="capsule" 
+              size="0.003 0.008049815466060522" 
+              pos="0.039733 0.019199 0.058511"
+              euler="-70.928 74.605 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_42" 
+              type="capsule" 
+              size="0.003 0.008143741384563585" 
+              pos="0.044842 0.034526 0.059561"
+              euler="-71.406 82.227 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_43" 
+              type="capsule" 
+              size="0.003 0.008175062793620775" 
+              pos="0.050000 0.050000 0.059912"
+              euler="-71.565 90.000 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_44" 
+              type="capsule" 
+              size="0.003 0.008143741384563585" 
+              pos="0.055158 0.065474 0.059561"
+              euler="-71.406 97.773 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_45" 
+              type="capsule" 
+              size="0.003 0.0080498154660605" 
+              pos="0.060267 0.080801 0.058511"
+              euler="-70.928 105.395 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_46" 
+              type="capsule" 
+              size="0.003 0.007893421604454318" 
+              pos="0.065277 0.095832 0.056776"
+              euler="-70.129 112.741 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_47" 
+              type="capsule" 
+              size="0.003 0.007674863641709155" 
+              pos="0.070140 0.110421 0.054375"
+              euler="-69.000 119.730 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_48" 
+              type="capsule" 
+              size="0.003 0.00739474290667154" 
+              pos="0.074806 0.124419 0.051336"
+              euler="-67.523 126.326 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_49" 
+              type="capsule" 
+              size="0.003 0.007054178495003455" 
+              pos="0.079226 0.137679 0.047696"
+              euler="-65.658 132.539 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_50" 
+              type="capsule" 
+              size="0.003 0.0066551734956284804" 
+              pos="0.083351 0.150053 0.043496"
+              euler="-63.335 138.413 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_51" 
+              type="capsule" 
+              size="0.003 0.006201235170844857" 
+              pos="0.087131 0.161394 0.038786"
+              euler="-60.435 144.012 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_52" 
+              type="capsule" 
+              size="0.003 0.005698461910464008" 
+              pos="0.090518 0.171555 0.033622"
+              euler="-56.767 149.419 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_53" 
+              type="capsule" 
+              size="0.003 0.005157523530968123" 
+              pos="0.093462 0.180387 0.028063"
+              euler="-52.021 154.724 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_54" 
+              type="capsule" 
+              size="0.003 0.00459738036376934" 
+              pos="0.095914 0.187742 0.022176"
+              euler="-45.702 160.025 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_55" 
+              type="capsule" 
+              size="0.003 0.004052242905846346" 
+              pos="0.097825 0.193475 0.016028"
+              euler="-37.053 165.424 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_56" 
+              type="capsule" 
+              size="0.003 0.003583248312253179" 
+              pos="0.099145 0.197435 0.009693"
+              euler="-25.084 171.023 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_line_57" 
+              type="capsule" 
+              size="0.003 0.003290047344363625" 
+              pos="0.099826 0.199477 0.003244"
+              euler="-9.143 176.925 0"
+              rgba="0.2 0.2 1.0 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_start" 
+              type="sphere" 
+              size="0.015" 
+              pos="0.000000 -0.100000 0.000000"
+              rgba="0.0 0.0 1.0 1.0"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_target" 
+              type="sphere" 
+              size="0.015" 
+              pos="0.100000 0.200000 0.000000"
+              rgba="1.0 0.5 0.0 1.0"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_right_foot_1_peak" 
+              type="sphere" 
+              size="0.018" 
+              pos="0.047415 0.042244 0.059912"
+              rgba="1.0 0.0 1.0 1.0"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_58" 
+              type="capsule" 
+              size="0.003 0.006496496314239025" 
+              pos="0.200349 0.100000 0.006487"
+              euler="-0.000 3.075 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_59" 
+              type="capsule" 
+              size="0.003 0.0064905840046770875" 
+              pos="0.201710 0.100000 0.019385"
+              euler="-0.000 8.977 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_60" 
+              type="capsule" 
+              size="0.003 0.006468043933057623" 
+              pos="0.204350 0.100000 0.032056"
+              euler="-0.000 14.576 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_61" 
+              type="capsule" 
+              size="0.003 0.006421544000066008" 
+              pos="0.208172 0.100000 0.044351"
+              euler="-0.000 19.975 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_62" 
+              type="capsule" 
+              size="0.003 0.006347572362940741" 
+              pos="0.213076 0.100000 0.056127"
+              euler="-0.000 25.276 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_63" 
+              type="capsule" 
+              size="0.003 0.0062459624581167085" 
+              pos="0.218963 0.100000 0.067244"
+              euler="-0.000 30.581 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_64" 
+              type="capsule" 
+              size="0.003 0.00611946683811324" 
+              pos="0.225737 0.100000 0.077572"
+              euler="-0.000 35.988 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_65" 
+              type="capsule" 
+              size="0.003 0.0059733818907709985" 
+              pos="0.233298 0.100000 0.086992"
+              euler="-0.000 41.587 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_66" 
+              type="capsule" 
+              size="0.003 0.005815188883182319" 
+              pos="0.241547 0.100000 0.095391"
+              euler="-0.000 47.461 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_67" 
+              type="capsule" 
+              size="0.003 0.005654150471342546" 
+              pos="0.250387 0.100000 0.102672"
+              euler="-0.000 53.674 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_68" 
+              type="capsule" 
+              size="0.003 0.005500782825818185" 
+              pos="0.259720 0.100000 0.108749"
+              euler="-0.000 60.270 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_69" 
+              type="capsule" 
+              size="0.003 0.0053661205810922735" 
+              pos="0.269445 0.100000 0.113552"
+              euler="-0.000 67.259 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_70" 
+              type="capsule" 
+              size="0.003 0.005260725559146721" 
+              pos="0.279466 0.100000 0.117023"
+              euler="-0.000 74.605 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_71" 
+              type="capsule" 
+              size="0.003 0.005193482042027082" 
+              pos="0.289684 0.100000 0.119122"
+              euler="-0.000 82.227 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_72" 
+              type="capsule" 
+              size="0.003 0.005170363688548146" 
+              pos="0.300000 0.100000 0.119824"
+              euler="-0.000 90.000 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_73" 
+              type="capsule" 
+              size="0.003 0.005193482042027109" 
+              pos="0.310316 0.100000 0.119122"
+              euler="-0.000 97.773 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_74" 
+              type="capsule" 
+              size="0.003 0.0052607255591466656" 
+              pos="0.320534 0.100000 0.117023"
+              euler="-0.000 105.395 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_75" 
+              type="capsule" 
+              size="0.003 0.005366120581092276" 
+              pos="0.330555 0.100000 0.113552"
+              euler="-0.000 112.741 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_76" 
+              type="capsule" 
+              size="0.003 0.005500782825818208" 
+              pos="0.340280 0.100000 0.108749"
+              euler="-0.000 119.730 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_77" 
+              type="capsule" 
+              size="0.003 0.005654150471342546" 
+              pos="0.349613 0.100000 0.102672"
+              euler="-0.000 126.326 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_78" 
+              type="capsule" 
+              size="0.003 0.005815188883182319" 
+              pos="0.358453 0.100000 0.095391"
+              euler="-0.000 132.539 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_79" 
+              type="capsule" 
+              size="0.003 0.005973381890770979" 
+              pos="0.366702 0.100000 0.086992"
+              euler="-0.000 138.413 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_80" 
+              type="capsule" 
+              size="0.003 0.006119466838113259" 
+              pos="0.374263 0.100000 0.077572"
+              euler="-0.000 144.012 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_81" 
+              type="capsule" 
+              size="0.003 0.006245962458116694" 
+              pos="0.381037 0.100000 0.067244"
+              euler="-0.000 149.419 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_82" 
+              type="capsule" 
+              size="0.003 0.006347572362940721" 
+              pos="0.386924 0.100000 0.056127"
+              euler="-0.000 154.724 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_83" 
+              type="capsule" 
+              size="0.003 0.006421544000066024" 
+              pos="0.391828 0.100000 0.044351"
+              euler="-0.000 160.025 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_84" 
+              type="capsule" 
+              size="0.003 0.006468043933057636" 
+              pos="0.395650 0.100000 0.032056"
+              euler="-0.000 165.424 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_85" 
+              type="capsule" 
+              size="0.003 0.006490584004677085" 
+              pos="0.398290 0.100000 0.019385"
+              euler="-0.000 171.023 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_line_86" 
+              type="capsule" 
+              size="0.003 0.006496496314239026" 
+              pos="0.399651 0.100000 0.006487"
+              euler="-0.000 176.925 0"
+              rgba="1.0 0.2 0.2 0.7"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_start" 
+              type="sphere" 
+              size="0.015" 
+              pos="0.200000 0.100000 0.000000"
+              rgba="0.0 0.0 1.0 1.0"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_target" 
+              type="sphere" 
+              size="0.015" 
+              pos="0.400000 0.100000 0.000000"
+              rgba="1.0 0.5 0.0 1.0"
+              contype="0" conaffinity="0"/>
+
+        <geom name="traj_left_foot_2_peak" 
+              type="sphere" 
+              size="0.018" 
+              pos="0.294830 0.100000 0.119824"
+              rgba="1.0 0.0 1.0 1.0"
+              contype="0" conaffinity="0"/>
+        
+    </worldbody>
+    
+    <actuator>
+        <motor name="left_hip_motor" joint="left_hip" gear="100"/>
+        <motor name="left_knee_motor" joint="left_knee" gear="100"/>
+        <motor name="left_ankle_motor" joint="left_ankle" gear="50"/>
+        <motor name="right_hip_motor" joint="right_hip" gear="100"/>
+        <motor name="right_knee_motor" joint="right_knee" gear="100"/>
+        <motor name="right_ankle_motor" joint="right_ankle" gear="50"/>
+    </actuator>
+</mujoco>
